@@ -1,0 +1,62 @@
+class ContaBancaria:
+
+  def __init__(self, saldo_inicial):
+
+    self.saldo = saldo_inicial
+
+
+
+  def depositar(self, valor):
+
+    self.saldo += valor
+
+    print(f"Depósito de R${valor:.2f} realizado. Novo saldo: R${self.saldo:.2f}")
+
+
+
+  def sacar(self, valor):
+
+    if self.saldo >= valor:
+
+      self.saldo -= valor
+
+      print(f"Saque de R${valor:.2f} realizado. Novo saldo: R${self.saldo:.2f}")
+
+    else:
+
+      print("Saldo insuficiente.")
+
+
+
+  def transferir(self, destino, valor):
+
+    if self.saldo >= valor:
+
+      self.saldo -= valor
+
+      destino.saldo += valor
+
+      print(f"Transferência de R${valor:.2f} realizada. Novo saldo: R${self.saldo:.2f}")
+
+    else:
+
+      print("Saldo insuficiente.")
+
+
+
+
+
+# Exemplo de uso:
+
+conta1 = ContaBancaria(1000)
+
+conta2 = ContaBancaria(500)
+
+
+
+conta1.depositar(500)
+
+conta1.sacar(200)
+
+conta1.transferir(conta2, 300)
+
